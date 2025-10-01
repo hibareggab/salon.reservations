@@ -1,0 +1,30 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(160deg, #fff0f5, #fff5f0);
+    direction: rtl;
+    text-align: center;
+    padding: 20px;
+    color: #5a3e36;
+}
+h1 { font-size: 52px; color: #d46a6a; margin-bottom: 20px; text-shadow: 1px 1px 3px #f9c2c2;}
+button {
+    margin: 8px; padding: 12px 22px; font-size: 17px;
+    background-color: #f7c1c1; border: none; border-radius: 12px; cursor: pointer;
+    transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+button:hover { background-color: #f48c8c; transform: scale(1.05); box-shadow: 0 6px 10px rgba(0,0,0,0.15);}
+input, select { padding: 6px 10px; margin: 4px; border: 1px solid #f0caca; border-radius: 8px; outline: none; transition: all 0.3s ease;}
+input:focus, select:focus { border-color: #d46a6a; box-shadow: 0 0 5px #f7c1c1;}
+table { margin: 20px auto; border-collapse: collapse; width: 95%; max-width: 1200px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05);}
+th, td { padding: 10px 12px; text-align: center;}
+th { background-color: #f7c1c1; color: #5a3e36; font-size: 17px;}
+tr:nth-child(even) { background-color: #fff0f0; }
+tr:nth-child(odd) { background-color: #fff5f5; }
+tr:hover { background-color: #ffe4e1; }
+.hidden { display: none; }
+.service-group { margin-bottom: 12px; padding: 10px; border: 1px dashed #f7c1c1; border-radius: 10px; background-color: #fffaf5; display: inline-block; }
+.specialist-table { width: 95%; margin: 15px auto; border-collapse: collapse; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05);}
+h1::before, h1::after { content: "🌸"; margin: 0 10px; }
+/* Ligne confirmée */
+.confirmed { background-color: #d4f7d4 !important; text-decoration: line-through; }
+.confirmed td::before { content: "✔️ "; }

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<script>
+  // Si l'utilisateur n'est pas connecté (sessionStorage), redirige vers login.html
+  (function () {
+    // autoriser l'accès direct si on est déjà sur login.html
+    const isLoginPage = location.pathname.endsWith('login.html') || location.pathname === '/';
+    if (!sessionStorage.getItem('salon_logged_in') && !isLoginPage) {
+      location.replace('login.html');
+    }
+  })();
+</script>
+
+<title>🌸 صالون زهرة أيلول 🌸</title>
+<link rel="stylesheet" href="styles.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/supabase.min.js"></script>
+<script src="scripts.js" defer></script>
+</head>
+<body>
+
+<h1>صالون زهرة أيلول</h1>
+<button id="logoutBtn" style="position:fixed;top:10px;left:10px;">تسجيل الخروج</button>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('logoutBtn');
+    if (btn) {
+      btn.addEventListener('click', () => {
+        sessionStorage.removeItem('salon_logged_in');
+        location.replace('login.html');
+      });
+    }
+  });
+</script>
+
+<button onclick="toggleForm()">سجّل حجز</button>
+<button onclick="toggleReservations()">الحجوزات</button>
+<button onclick="toggleConfirmedServices()">الخدمات المؤكدة</button>
+<button onclick="toggleSpecialists()">جدول الأخصائيات</button>
+<button onclick="toggleBeautyBlenders()">إحصائيات البيوتي بليندر</button>
+
+<div id="reservationForm" class="hidden">
+    <h2>سجل الحجز</h2>
+    <div id="servicesContainer">
+        <div class="service-group">
+            <label>الخدمة : </label><input type="text" class="serviceName">
+            <label>سعر الخدمة : </label><input type="number" class="servicePrice">
+        </div>
+    </div>
+    <button onclick="addService()">إضافة خدمة أخرى</button><br>
+    <label>لتاريخ : </label><input type="date" id="date"><br>
+    <label>الساعة : </label><input type="time" id="time"><br>
+    <label>العربون : </label><input type="number" id="deposit"><br>
+    <label>بيوتي بليندر ٥ ريال سعودي : </label><input type="checkbox" id="bbCheck"><br>
+    <label>ملاحظات : </label><input type="text" id="notes"><br><br>
+    <button onclick="saveReservationSupabase()">حفظ الحجز</button>
+</div>
+
+<div id="reservationTableDiv" class="hidden">
+    <h2>الحجوزات</h2>
+    <div id="reservationMonthTables"></div>
+</div>
+
+<div id="confirmedServicesDiv" class="hidden">
+    <h2>الخدمات المؤكدة</h2>
+    <div id="confirmedMonthTables"></div>
+</div>
+
+<div id="specialistsDiv" class="hidden">
+    <h2>جدول الأخصائيات</h2>
+    <button onclick="addSpecialist()">➕ إضافة أخصائية</button>
+    <div id="specialistTables"></div>
+</div>
+
+<div id="bbStatsDiv" class="hidden">
+    <h2>إحصائيات البيوتي بليندر</h2>
+    <div id="bbMonthTables"></div>
+</div>
+
+</body>
+</html>
